@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:36:31 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/19 20:02:05 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/22 17:02:16 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define CLASS_HPP
 
 #include <iostream>
+#include <string>
+#include <cstring>
+#include <limits>
+#include <iostream>
+#include <iomanip>
+#include <string>
 
 enum e_info {
 	FIRSTNAME,

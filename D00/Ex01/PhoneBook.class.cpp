@@ -6,13 +6,10 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:50:42 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/19 19:57:12 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/22 17:02:12 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <iomanip>
-#include <string>
 #include "class.hpp"
 
 PhoneBook::PhoneBook() : oldest(0){

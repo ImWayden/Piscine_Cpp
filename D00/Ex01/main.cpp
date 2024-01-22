@@ -6,14 +6,12 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:54:48 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/19 18:17:45 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/22 17:01:43 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "class.hpp"
-#include <string>
-#include <cstring>
-#include <limits>
+
 
 bool isnum(const std::string& str){
 	for (char caractere : str) 
