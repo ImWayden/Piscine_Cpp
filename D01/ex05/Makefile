@@ -6,7 +6,7 @@
 #    By: wayden <wayden@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 23:26:11 by wayden            #+#    #+#              #
-#    Updated: 2024/01/23 17:02:45 by wayden           ###   ########.fr        #
+#    Updated: 2024/01/23 18:40:55 by wayden           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ CXXFLAGS = -Wall -Werror -Wextra -Wno-unused
 
 SRCS = main.cpp Harl.cpp
 OBJS = $(patsubst %.cpp,obj/%.o,$(SRCS))
-NAME = Sed
-
+NAME = Harl
 all: obj $(NAME)
 
 obj:
