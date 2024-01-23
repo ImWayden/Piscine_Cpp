@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:02:57 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/23 18:46:51 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:11:42 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,50 @@ int Harl::hash(const std::string& str){
 }
 
 void Harl::debug(){
-	std::cout << HARL_DEBUG << std::endl;
+	std::cout << "[ DEBUG ]" << '\n'\
+	<< HARL_DEBUG << std::endl;
 }
 
 void Harl::error(){
-	std::cout << HARL_ERROR << std::endl;
+	std::cout << "[ ERROR ]" << '\n'\
+	<< HARL_ERROR << std::endl;
 }
 
 void Harl::warning(){
-	std::cout << HARL_WARNING << std::endl;
+	std::cout << "[ WARNING ]" << '\n'\
+	<< HARL_WARNING << std::endl;
 }
 
 void Harl::info(){
-	std::cout << HARL_INFO << std::endl;
+	std::cout << "[ INFO ]" << '\n'\
+	<< HARL_INFO << std::endl;
 }
 
 
 void Harl::complain(std::string level)
 {
 	void (Harl::*functions[4])( void ) = {&Harl::error, &Harl::debug, &Harl::info, &Harl::warning};
-	(this->*functions[this->hash(level)])();
+	switch(this->hash(level))
+	{
+		case DEBUG:
+			(this->*functions[DEBUG])();
+			(this->*functions[INFO])();
+			(this->*functions[WARNING])();
+			(this->*functions[ERROR])();
+			break;
+		case INFO:
+			(this->*functions[INFO])();
+			(this->*functions[WARNING])();
+			(this->*functions[ERROR])();
+			break;
+		case WARNING:
+			(this->*functions[WARNING])();
+			(this->*functions[ERROR])();
+			break;
+		case ERROR:
+			(this->*functions[ERROR])();
+			break;
+		default:
+			break;						
+	}
 }

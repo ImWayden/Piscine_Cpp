@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:57:35 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/23 18:49:16 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:09:40 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,17 @@
 
 
 bool check(std::string input){
-	return(input == "INFO" || input == "DEBUG" || input == "ERROR" || input == "WARNING" || input == "EXIT");
+	return(input == "INFO" || input == "DEBUG" || input == "ERROR" || input == "WARNING");
 }
 
 int main(int argc, char **argv)
 {
 	Harl karen;
-	std::string input;
-	
-	while(1)
-	{
-		std::cout << "Input : "; 
-		getline(std::cin, input);
-		if(std::cin.eof())
-		{
-			std::cin.clear();
-            clearerr(stdin);
-			std::cout << std::endl;
-		}
-		if (input.empty() || !check(input))
-		{
-			std::cout << "invalide input." << '\n'\
-			<< "LEVEL: DEBUG, INFO, ERROR, WARNING" << std::endl;
-			continue;
-		}
-		else if(input == "EXIT")
-			break;
-		karen.complain(input);;
-	}
+	if(argc != 2 || !argv[1])
+		return(std::cout << "Usage : ./HarlFilter [LEVEL]" << std::endl, 1);
+	if(!check(argv[1]))
+		return(std::cout << "[ Probably complaining about insignificant problems ]" << std::endl, 1);
+	else
+		karen.complain(argv[1]);;
 	return 0;
 }
