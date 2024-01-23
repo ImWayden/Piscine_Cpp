@@ -6,16 +6,14 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:57:35 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/23 18:49:16 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:27:59 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/Includes.hpp"
 
 
-bool check(std::string input){
-	return(input == "INFO" || input == "DEBUG" || input == "ERROR" || input == "WARNING" || input == "EXIT");
-}
+
 
 int main(int argc, char **argv)
 {
@@ -32,13 +30,7 @@ int main(int argc, char **argv)
             clearerr(stdin);
 			std::cout << std::endl;
 		}
-		if (input.empty() || !check(input))
-		{
-			std::cout << "invalide input." << '\n'\
-			<< "LEVEL: DEBUG, INFO, ERROR, WARNING" << std::endl;
-			continue;
-		}
-		else if(input == "EXIT")
+		if(input == "EXIT")
 			break;
 		karen.complain(input);;
 	}

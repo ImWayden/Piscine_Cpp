@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:02:57 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/23 18:46:51 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/23 19:29:32 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int Harl::hash(const std::string& str){
 		i++;
 	}
 	return ((hashvalue) % 4);	
+}
+
+bool Harl::check(std::string input){
+	return(input == "INFO" || input == "DEBUG" || input == "ERROR" || input == "WARNING" || input == "EXIT");
 }
 
 void Harl::debug(){
@@ -47,5 +51,11 @@ void Harl::info(){
 void Harl::complain(std::string level)
 {
 	void (Harl::*functions[4])( void ) = {&Harl::error, &Harl::debug, &Harl::info, &Harl::warning};
-	(this->*functions[this->hash(level)])();
+	if (level.empty() || !Harl::check(level))
+	{
+		std::cout << "invalide input." << '\n'\
+		<< "LEVEL: DEBUG, INFO, ERROR, WARNING" << std::endl;
+	}
+	else
+		(this->*functions[this->hash(level)])();
 }
