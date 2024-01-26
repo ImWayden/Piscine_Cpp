@@ -6,19 +6,19 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 13:48:14 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/25 19:34:02 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/26 12:51:31 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/Includes.hpp"
 //constructeur
 Fixed::Fixed() : value(0) {
-	std::cout << "Default " << CONSTRUCTOR << std::endl;
+	//std::cout << "Default " << CONSTRUCTOR << std::endl;
 }
 
 //coy constructor
 Fixed::Fixed(const Fixed& from) {
-	std::cout << "Copy " << CONSTRUCTOR << std::endl;
+	//std::cout << "Copy " << CONSTRUCTOR << std::endl;
 	*this = from;
 }
 
@@ -37,17 +37,17 @@ Fixed::Fixed(const float raw){
 }
 */
 Fixed::Fixed(const float raw) : value( roundf(raw * (1 << Fixed::nb_bits)) ){
-	std::cout << "Float " << CONSTRUCTOR << std::endl;
+	//std::cout << "Float " << CONSTRUCTOR << std::endl;
 
 }
 
 Fixed::Fixed(const int raw){
-	std::cout << "Int " << CONSTRUCTOR << std::endl;
-	this->value = raw << Fixed::nb_bits;
+	//std::cout << "Int " << CONSTRUCTOR << std::endl;
+	this->value = raw << this->nb_bits;
 }
 //destructeur
 Fixed::~Fixed() {
-	std::cout << DESTRUCTOR << std::endl;
+	//std::cout << DESTRUCTOR << std::endl;
 }
 
 
@@ -77,13 +77,34 @@ void Fixed::setRawBits(int const raw) {
 **  
 */
 float Fixed::toFloat( void ) const{
+	uint32_t fractionBits = this->value & ((1 << this->nb_bits) - 1);
+	uint32_t intBits = this->value >> this->nb_bits;
+	float fractionValue = static_cast<float>(fractionBits) / (1 << this->nb_bits);
 	return (float)this->value / (float)(1 << Fixed::nb_bits);
 }
 
 int Fixed::toInt( void ) const{
-	uint32_t intBits = this->value >> Fixed::nb_bits;
+	uint32_t intBits = this->value >> this->nb_bits;
 	return(static_cast<int>(intBits));
 }
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b){
+	return(a < b) ? a : b;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b){
+	return(a < b) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b){
+	return(a > b) ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b){
+	return(a > b) ? a : b;
+}
+
+
 
 /*
 
@@ -92,7 +113,7 @@ int Fixed::toInt( void ) const{
 */
 
 Fixed& Fixed::operator=(const Fixed& from) {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
     if (this != &from)
         this->value = from.getRawBits();
     return *this;
@@ -101,4 +122,66 @@ Fixed& Fixed::operator=(const Fixed& from) {
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
     os << fixed.toFloat();
     return os;
+}
+
+bool Fixed::operator>(const Fixed& other) const{
+	return(this->getRawBits() > other.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed& other) const{
+	return(this->getRawBits() < other.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed& other) const{
+	return(this->getRawBits() >= other.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& other) const{
+	return(this->getRawBits() <= other.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& other) const{
+	return(this->getRawBits() == other.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& other) const{
+	return(this->getRawBits() != other.getRawBits());
+}
+
+Fixed Fixed::operator+(const Fixed& other) const{
+	return(Fixed(this->toFloat() + other.toFloat()));
+}
+Fixed Fixed::operator-(const Fixed& other) const{
+	return(Fixed(this->toFloat() - other.toFloat()));
+}
+Fixed Fixed::operator*(const Fixed& other) const{
+	return(Fixed(this->toFloat() * other.toFloat()));
+}
+Fixed Fixed::operator/(const Fixed& other) const{
+	return(Fixed(this->toFloat() / other.toFloat()));
+}
+
+Fixed& Fixed::operator++() {
+    this->value += 1;
+    return *this;
+}
+
+// Post-incrémentation
+Fixed Fixed::operator++(int) {
+    Fixed temp(*this);
+    this->value += 1;
+    return temp;
+}
+
+// Pré-décrémentation
+Fixed& Fixed::operator--() {
+    this->value -= 1;
+    return *this;
+}
+
+// Post-décrémentation
+Fixed Fixed::operator--(int) {
+    Fixed temp(*this);
+    this->value -= 1;
+    return temp;
 }
