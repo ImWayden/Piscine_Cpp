@@ -6,16 +6,16 @@
 #    By: wayden <wayden@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 23:26:11 by wayden            #+#    #+#              #
-#    Updated: 2024/01/29 13:33:00 by wayden           ###   ########.fr        #
+#    Updated: 2024/01/29 17:12:45 by wayden           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -Wno-unused
 
-SRCS =  main.cpp ClapTrap.cpp
+SRCS =  main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS = $(patsubst %.cpp,obj/%.o,$(SRCS))
-NAME = ClapTrap
+NAME = ScavTrap
 all: obj $(NAME)
 
 obj:

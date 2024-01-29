@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.hpp                                        :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:53:06 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/29 17:09:37 by wayden           ###   ########.fr       */
+/*   Created: 2024/01/29 16:47:14 by wayden            #+#    #+#             */
+/*   Updated: 2024/01/29 17:15:33 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_HPP
-# define DEFINES_HPP
 
-# define CONSTRUCTOR "Constructor called"
-# define DESTRUCTOR "Destructor called"
-# define MEMBER "member function called"
-# define OUTENERGY " Does not have enought energy Left to"
-# define OUTHP " Has already been destroyed and cannot"
-# define REPAIR " repair Itself"
-# define ATTACK " attack anymore"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+
+# include "Includes.hpp"
+
+class ScavTrap : public ClapTrap {
+
+public:
+	ScavTrap(std::string name);
+	~ScavTrap( void );
+
+	void attack(const std::string& target);
+	void guardGate();
+private:
+	
+};
+
+
 
 #endif

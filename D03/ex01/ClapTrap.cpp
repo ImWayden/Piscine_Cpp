@@ -6,24 +6,24 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:59:26 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/29 13:39:01 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/29 17:07:22 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/Includes.hpp"
 
 ClapTrap::ClapTrap(std::string name) : name(name), HitPoint(10), EnergyPoint(10), AttackDamage(0){
-	std::cout << "Default" << CONSTRUCTOR << std::endl;
+	std::cout << "Default ClapTrap" << CONSTRUCTOR << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& from) : name(from.name), HitPoint(from.HitPoint),\
 EnergyPoint(from.EnergyPoint), AttackDamage(from.AttackDamage){
-	std::cout << "Copy" << CONSTRUCTOR << std::endl;
+	std::cout << "Copy Claptrap" << CONSTRUCTOR << std::endl;
 }
 
 
 ClapTrap::~ClapTrap( void ){
-	std::cout << DESTRUCTOR << std::endl;
+	std::cout << "ClapTrap " << DESTRUCTOR << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){
