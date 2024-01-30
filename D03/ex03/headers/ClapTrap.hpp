@@ -6,13 +6,13 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:03:07 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/30 03:14:32 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/30 02:51:51 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
-
+# include "Includes.hpp"
 class ClapTrap{
 public:
 	//ClapTrap( void );
@@ -20,7 +20,7 @@ public:
 	ClapTrap(ClapTrap& from);
 	
 	~ClapTrap( void );
-	
+
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);

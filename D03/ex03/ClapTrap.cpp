@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:59:26 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/30 03:14:16 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/30 03:38:17 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ClapTrap::attack(const std::string& target){
 	std::stringstream ss;
 	ss  << " attacks " << target\
 		<< ", causing " << this->AttackDamage << " points of damage! " << std::endl;
-	checkEnergyandLife(ss.str(), "ClapTrap");
+	this->checkEnergyandLife(ss.str(), "ClapTrap");
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
@@ -46,7 +46,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	int after = this->HitPoint + amount;
 	ss << "is being repaired!" << '\n'\
 	<< "He regained " << amount << " HitPoints!" << std::endl;
-	if(checkEnergyandLife(ss.str(), "ClapTrap"))
+	if(this->checkEnergyandLife(ss.str(), "ClapTrap"))
 		this->HitPoint = clamp(after,this->HitPoint,after);
 }
 
@@ -65,7 +65,7 @@ std::ostream& ClapTrap::print(std::ostream& os) const
 	os << "Name        : " << this->name << '\n'\
 	<< "HitPoint    : " << this->HitPoint << '\n'\
 	<< "EnergyPoint : " << this->EnergyPoint << '\n'\
-	<< "AttackDmg   : " << this->AttackDamage << std::endl;
+	<< "AttackDmg   : " << this->AttackDamage;
 	return os;
 }
 

@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:03:07 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/29 17:00:20 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/30 03:13:28 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	std::ostream& print(std::ostream& os) const;
 	ClapTrap& operator=(const ClapTrap& autre);
 protected:
+	bool checkEnergyandLife(std::string ss, std::string type);
 	std::string name;
 	int HitPoint;
 	int EnergyPoint;

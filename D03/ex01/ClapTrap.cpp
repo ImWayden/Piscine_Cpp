@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:59:26 by wayden            #+#    #+#             */
-/*   Updated: 2024/01/29 17:07:22 by wayden           ###   ########.fr       */
+/*   Updated: 2024/01/30 03:13:10 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,10 @@ ClapTrap::~ClapTrap( void ){
 }
 
 void ClapTrap::attack(const std::string& target){
-	std::cout << "ClapTrap " << this->name;
-	if(this->HitPoint && this->EnergyPoint)
-	{
-		std::cout << " attacks " << target\
+	std::stringstream ss;
+	ss  << " attacks " << target\
 		<< ", causing " << this->AttackDamage << " points of damage! " << std::endl;
-		this->EnergyPoint -= 1;
-	}
-	else if(!this->HitPoint)
-		std::cout << OUTHP << ATTACK << std::endl; 
-	else
-		std::cout << OUTENERGY << ATTACK << std::endl; 
+	checkEnergyandLife(ss.str(), "ClapTrap");
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
@@ -49,20 +42,12 @@ void ClapTrap::takeDamage(unsigned int amount){
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-	std::cout << "ClapTrap " << this->name;
+	std::stringstream ss;
 	int after = this->HitPoint + amount;
-	if(this->HitPoint && this->EnergyPoint)
-	{
+	ss << "is being repaired!" << '\n'\
+	<< "He regained " << amount << " HitPoints!" << std::endl;
+	if(checkEnergyandLife(ss.str(), "ClapTrap"))
 		this->HitPoint = clamp(after,this->HitPoint,after);
-		std::cout << "is being repaired!"\
-		<< "\nHe regained " << amount << " HitPoints!" << std::endl;
-		std::cout << "HP Left : " << this->HitPoint << std::endl;
-		this->EnergyPoint -= 1;
-	}
-	else if(!this->HitPoint)
-		std::cout << OUTHP << REPAIR << std::endl; 
-	else
-		std::cout << OUTENERGY << REPAIR << std::endl; 
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& from){
@@ -87,4 +72,19 @@ std::ostream& ClapTrap::print(std::ostream& os) const
 std::ostream& operator<<(std::ostream& os, const ClapTrap& Bot){
 	Bot.print(os);
 	return os;
+}
+
+bool ClapTrap::checkEnergyandLife(std::string ss, std::string type){
+	std::cout << type << " " << this->name;
+	if(this->HitPoint && this->EnergyPoint)
+	{
+		std::cout << ss;
+		this->EnergyPoint -= 1;
+		return true;
+	}
+	else if(!this->HitPoint)
+		std::cout << OUTHP << REPAIR << std::endl; 
+	else
+		std::cout << OUTENERGY << REPAIR << std::endl;
+	return false;
 }
