@@ -1,0 +1,5 @@
+corriger tout les fichier makefile pour inclure le flag -std=c++98 ✔
+supprimer les utilisation de nullptr ✔
+retenter de build et lancer les exos ✔
+
+Changer le contructeur de copie dans ex02 ????
