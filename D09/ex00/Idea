@@ -1,3 +1,5 @@
 faire une  map dans laquelle je stock en cle la date et en value la valeeur associe,
  ensuite je n'aurai qu'a lire l'input verifier si c'est une date valide , 
  puis checker sa presence dans la db ensuite multiplier la value de l'input par la key.value 
+
+

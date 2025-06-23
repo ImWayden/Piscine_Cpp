@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 02:28:29 by wayden            #+#    #+#             */
-/*   Updated: 2025/02/18 04:43:50 by wayden           ###   ########.fr       */
+/*   Updated: 2025/03/10 18:01:11 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	BitcoinExchange& operator=(const BitcoinExchange& from);
 private:
 	std::map<std::string, float> data;
-	bool checkValue(float &value);
+	bool checkValue(float& value);
 	float getClosestValue(std::string date);
 };
 

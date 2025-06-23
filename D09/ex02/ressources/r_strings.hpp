@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.hpp                                       :+:      :+:    :+:   */
+/*   r_strings.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 18:04:21 by wayden            #+#    #+#             */
-/*   Updated: 2025/03/10 17:32:48 by wayden           ###   ########.fr       */
+/*   Created: 2025/04/29 21:40:16 by wayden            #+#    #+#             */
+/*   Updated: 2025/06/22 16:07:18 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef RESSOURCES_HPP
+# define RESSOURCES_HPP
 
-# include <string>
-# include <cstring>
-# include <iostream>
-# include <fstream>
-# include <sstream>
-# include <limits>
-# include <ctime>
-# include <cstdlib>
-# include <iomanip>
-# include <algorithm>
-# include <map>
 
-# include "BitcoinExchange.hpp"
 
+
+#define ERROR "Error : "
+#define ERR_NOTENOUGH_ARG "Not enought arguments"
+#define ERR_INVALID_ARG "Invalid Arguments\n    Args should only contain positive integers."
+#define ERR_UNIQUE_ARG "Arguments must be unique."
+#define USAGE_STR "Usage : ./PMergeMe 12 42 73 ..."
 
 #endif

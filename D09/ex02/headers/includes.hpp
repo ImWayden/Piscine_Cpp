@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 18:04:21 by wayden            #+#    #+#             */
-/*   Updated: 2025/03/10 17:32:48 by wayden           ###   ########.fr       */
+/*   Updated: 2025/06/22 20:24:42 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@
 # include <cstdlib>
 # include <iomanip>
 # include <algorithm>
-# include <map>
+# include <vector>
+# include <deque>
+# include <set>
 
-# include "BitcoinExchange.hpp"
+# include "../ressources/r_numbers.hpp"
+# include "../ressources/r_strings.hpp"
 
+# include "ErrorManager.hpp"
+# include "proto.hpp"
 
 #endif

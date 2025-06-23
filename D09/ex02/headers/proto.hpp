@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.hpp                                       :+:      :+:    :+:   */
+/*   proto.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 18:04:21 by wayden            #+#    #+#             */
-/*   Updated: 2025/03/10 17:32:48 by wayden           ###   ########.fr       */
+/*   Created: 2025/04/29 22:05:42 by wayden            #+#    #+#             */
+/*   Updated: 2025/06/22 20:24:40 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef PROTO_HPP
+# define PROTO_HPP
 
-# include <string>
-# include <cstring>
-# include <iostream>
-# include <fstream>
-# include <sstream>
-# include <limits>
-# include <ctime>
-# include <cstdlib>
-# include <iomanip>
-# include <algorithm>
-# include <map>
+# include "includes.hpp"
+# include "PmergeMe.hpp"
 
-# include "BitcoinExchange.hpp"
-
+void printVector(const std::vector<int>& v);
+void printDeque(const std::deque<int>& d);
 
 #endif
