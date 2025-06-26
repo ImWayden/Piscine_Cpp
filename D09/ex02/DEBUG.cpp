@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 22:02:43 by wayden            #+#    #+#             */
-/*   Updated: 2025/06/22 20:23:17 by wayden           ###   ########.fr       */
+/*   Updated: 2025/06/26 19:42:41 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void printDeque(const std::deque<int>& deq) {
 	std::cout << "Deque contents: ";
 	for (std::deque<int>::const_iterator it = deq.begin(); it != deq.end(); ++it) {
 		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+}
+
+void printVector2(const std::vector<int>& i, const std::vector<int>& vec) {
+	std::cout << "Vector contents: ";
+	for (std::vector<int>::const_iterator it = i.begin(); it != i.end(); ++it) {
+		std::cout << vec[*it] << " ";
 	}
 	std::cout << std::endl;
 }

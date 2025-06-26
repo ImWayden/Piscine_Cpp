@@ -1,0 +1,30 @@
+
+we have a list of unsorted elements
+
+we split this list into pairs 
+we sort each pairs and place them in a list of pairs
+we repeat the operation on each list until we have a list of 1
+then elements gets redivided
+we then take the big element of each pair and put them into main_list
+then the little unsorted elements are put into pend
+then we generate jacob suite were j(n) >= pend.size into a list [1,3,5,11] etc
+then we take the j[i]th elements of the pend list and binary insert them until we hit the j[i-1]th element
+if pend isn't empty we then we just binary insert the lasts elements in reverse order 
+once it's done we repeat until we get out of the recursion
+
+
+
+je veux mettre en place un algorythme de ford jhonson recursif 
+qui vas prendre le vector d'element et separer en main et pend en fonction des pair qu'il forme
+puis si la liste de main est plus grande que 1
+
+
+un ford jhonson dont la partie trie renvois une liste d'index plutot que des valeurs trie afin de faciliter la permutation lors de la recursion en gros ca prendrait 
+
+prend une liste d'element non trie creer une liste d'iterateur avec un iterateur pour chaque element
+appeler l'algo de trie
+algo trie:
+prendre une liste d'iterateur les trie deux par deux en fontion de la valeur qu'ils pointent enmetant a droite ceux qui pointe sur un nombre plus eleve
+creer une liste d'iterateur pointant sur les iterateur pointant sur les  element les plus grand ainsi qu'une nouvele liste contenant les valeur des elements les plus grand 
+aplliquer recursivement cet algo sur ma liste d'iterateur accompagner de la liste des valeurs
+
