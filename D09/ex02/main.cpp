@@ -6,12 +6,11 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 21:04:24 by wayden            #+#    #+#             */
-/*   Updated: 2025/06/26 22:43:00 by wayden           ###   ########.fr       */
+/*   Updated: 2025/06/28 23:36:02 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/includes.hpp"
-
 
 bool isvalidEntry(std::istringstream& iss, int value, std::set<int>& seen)
 {
@@ -40,30 +39,28 @@ void parseArgs(int argc, char** argv, std::vector<int>& v_ints, std::deque<int>&
 	}
 }
 
-void printBefore(std::vector<int>& v_ints)
-{
-	std::cout << "Before :";
-	for(size_t i = 0; i < v_ints.size(); i++)
-		std::cout << " " << v_ints[i];
-	std::cout << std::endl;
-}
 
 int main(int argc, char **argv)
 {
-#ifdef DEBUG_BUILD
-    std::cout << "DEBUG ACTIVE" << std::endl;
-#else
-    std::cerr << "DEBUG_BUILD n'est pas défini !" << std::endl;
-#endif
-	std::vector<int> v_ints;
-	std::deque<int> dq_ints;
-	parseArgs(argc, argv, v_ints, dq_ints);
-	printBefore(v_ints);
-	merge_insert(v_ints);
-	printBefore(v_ints);
-#ifdef DEBUG_BUILD
-		printVector(v_ints);
-		printDeque(dq_ints);
-#endif
-	return 0;
+    std::vector<int> v_ints;
+    std::deque<int> dq_ints;
+
+    parseArgs(argc, argv, v_ints, dq_ints);
+
+    printContent(BEFORE, v_ints);
+
+    clock_t start_vec = clock();
+    PmergeMe<std::vector>::merge_insert(v_ints,1);
+    clock_t end_vec = clock();
+    double time_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1e3;
+    clock_t start_deque = clock();
+    PmergeMe<std::deque>::merge_insert(dq_ints,1);
+    clock_t end_deque = clock();
+    double time_deque = static_cast<double>(end_deque - start_deque) / CLOCKS_PER_SEC * 1e3;
+	printContent(AFTER, v_ints);
+    std::cout << "Time to process a range of " << v_ints.size()
+              << " elements with std::vector : " << std::fixed << std::setprecision(6) << time_vec << " ms" << std::endl;
+    std::cout << "Time to process a range of " << dq_ints.size()
+              << " elements with std::deque  : " << std::fixed << std::setprecision(6) << time_deque << " ms" << std::endl;
+    return 0;
 }

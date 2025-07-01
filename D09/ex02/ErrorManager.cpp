@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:49:36 by wayden            #+#    #+#             */
-/*   Updated: 2025/06/22 21:40:15 by wayden           ###   ########.fr       */
+/*   Updated: 2025/06/29 00:05:19 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,30 @@ void ErrorManager::clear()
 
 void ErrorManager::exitWithError()
 {
-	std::cerr << "Error (" << error_code << "): " << error_string << std::endl;
+	std::cerr << ERROR << error_string << std::endl;
 	std::exit(error_code);
 }
 
-
 void ErrorManager::exitWithError(int code, const std::string& message)
 {
-	std::cerr << "Error (" << code << "): " << message << std::endl;
+	std::cerr << ERROR << message << std::endl;
 	std::exit(code);
+}
+
+// useless but the norme ask for it
+ErrorManager::ErrorManager(const ErrorManager& other)
+{
+	this->error_string = other.error_string;
+	this->error_code = other.error_code;
+}
+
+// useless but the norme ask for it
+ErrorManager& ErrorManager::operator=(const ErrorManager& other)
+{
+	if (this != &other)
+	{
+		this->error_string = other.error_string;
+		this->error_code = other.error_code;
+	}
+	return *this;
 }

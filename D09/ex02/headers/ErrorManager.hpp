@@ -6,7 +6,7 @@
 /*   By: wayden <wayden@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 15:37:52 by wayden            #+#    #+#             */
-/*   Updated: 2025/06/22 20:23:18 by wayden           ###   ########.fr       */
+/*   Updated: 2025/06/27 16:07:32 by wayden           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,14 @@ private:
 
 	static ErrorManager* instance;
 };
+
+template <typename Container>
+void printContent(std::string str,Container& v_ints)
+{
+	std::cout << str;
+	for(size_t i = 0; i < v_ints.size(); i++)
+		std::cout << " " << v_ints[i];
+	std::cout << std::endl;
+}
 
 #endif // ERRORMANAGER_HPP
